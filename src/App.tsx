@@ -30,7 +30,7 @@ const charAsciiArray = [
 ];
 
 const App: React.FC = () => {
-  const [input, s etInput] = useState<string>("");
+  const [input, setInput] = useState<string>("");
   const [asciiCodes, setAsciiCodes] = useState<string>("");
 
   const findAsciiCode = (char: string): number | null => {
@@ -102,8 +102,9 @@ const App: React.FC = () => {
                 type="text" 
                 value={input} 
                 onChange={handleInputChange} 
-                className="border border-slate-200 h-48 outline-slate-100 shadow-xl block rounded-sm p-0 w-72 w-80" 
+                className="border border-slate-200 h-52 outline-slate-100 shadow-xl block rounded-sm p-0 w-72 w-80" 
                 placeHolder="Small letter"
+                resize
 
               />
             </label>
@@ -116,7 +117,7 @@ const App: React.FC = () => {
                 value={asciiCodes}
                 onChange={handleAsciiChange}
                 placeHolder="ASCII code"
-                className="border border-slate-200 h-48 outline-slate-100 shadow-xl block rounded-sm p-0 w-72 w-80"
+                className="border border-slate-200 h-52 outline-slate-100 shadow-xl block rounded-sm p-0 w-72 w-80"
               />
             </label>
           </div>
