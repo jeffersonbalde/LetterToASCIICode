@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 const charAsciiArray = [
   { char: "a", ascii: 97 },
@@ -43,7 +43,7 @@ const App: React.FC = () => {
     return pair ? pair.char : null;
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newInput = e.target.value;
     setInput(newInput);
     const asciiValues = newInput
@@ -57,7 +57,7 @@ const App: React.FC = () => {
     setAsciiCodes(asciiValues);
   };
 
-  const handleAsciiChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleAsciiChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newAsciiInput = e.target.value;
     setAsciiCodes(newAsciiInput);
     const chars = newAsciiInput
@@ -76,17 +76,17 @@ const App: React.FC = () => {
     setInput(chars);
   };
 
-  const generateConversion = () => {
-    const asciiValues = input
-      .split("")
-      .map((char) => {
-        const asciiValue = findAsciiCode(char);
-        return asciiValue !== null ? asciiValue.toString() : "";
-      })
-      .filter((value) => value !== "")
-      .join(", ");
-    setAsciiCodes(asciiValues);
-  };
+  // const generateConversion = () => {
+  //   const asciiValues = input
+  //     .split("")
+  //     .map((char) => {
+  //       const asciiValue = findAsciiCode(char);
+  //       return asciiValue !== null ? asciiValue.toString() : "";
+  //     })
+  //     .filter((value) => value !== "")
+  //     .join(", ");
+  //   setAsciiCodes(asciiValues);
+  // };
 
   return (
     <div className="App py-14 lg:py-12 px-4 lg:px-[26rem]">
@@ -99,13 +99,10 @@ const App: React.FC = () => {
             <label className="">
               Word:
               <textarea 
-                type="text" 
                 value={input} 
                 onChange={handleInputChange} 
                 className="border border-slate-200 h-52 outline-slate-100 shadow-xl block rounded-sm p-0 w-72 w-80" 
-                placeHolder="Small letter"
-                resize
-
+                placeholder="Small letter"
               />
             </label>
           </div>
@@ -113,10 +110,9 @@ const App: React.FC = () => {
             <label>
               ASCII Codes (comma-separated):
               <textarea
-                type="text"
                 value={asciiCodes}
                 onChange={handleAsciiChange}
-                placeHolder="ASCII code"
+                placeholder="ASCII code"
                 className="border border-slate-200 h-52 outline-slate-100 shadow-xl block rounded-sm p-0 w-72 w-80"
               />
             </label>
