@@ -27,7 +27,10 @@ const charAsciiArray = [
   { char: "x", ascii: 120 },
   { char: "y", ascii: 121 },
   { char: "z", ascii: 122 },
+  { char: "!", ascii: 123123 }
 ];
+
+// console.log("test")
 
 const App: React.FC = () => {
   const [input, setInput] = useState<string>("");
@@ -52,18 +55,18 @@ const App: React.FC = () => {
         const asciiValue = findAsciiCode(char);
         return asciiValue !== null ? asciiValue.toString() : "";
       })
-      .filter((value) => value !== "")
-      .join(", ");
+      .join(" ");
     setAsciiCodes(asciiValues);
-  };
+  }; 
 
   const handleAsciiChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newAsciiInput = e.target.value;
+    console.log(e.target.value) ;
     setAsciiCodes(newAsciiInput);
     const chars = newAsciiInput
       .split(",")
       .map((asciiStr) => {
-        const code = parseInt(asciiStr.trim(), 10);
+        const code = parseInt(asciiStr);
         if (!isNaN(code)) {
           const char = findCharFromAscii(code);
           return char !== null ? char : "";
@@ -123,5 +126,7 @@ const App: React.FC = () => {
     </div>
   );
 };
+
+console.log("test")
 
 export default App;
